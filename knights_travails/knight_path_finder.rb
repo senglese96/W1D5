@@ -30,4 +30,20 @@ class KnightPathFinder
       queue += new_moves
     end
   end
+
+  def find_path(end_pos)
+    trace_back_path(@root_node.bfs(end_pos))
+  end
+
+  def trace_back_path(end_node)
+    path = []
+    pointer = end_node
+
+    while pointer != nil
+      path.unshift(pointer.value)
+      pointer = pointer.parent
+    end
+
+    path
+  end
 end
